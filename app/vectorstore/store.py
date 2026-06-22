@@ -3,14 +3,8 @@
 from pathlib import Path
 
 from langchain_chroma import Chroma
-from langchain_openai import OpenAIEmbeddings
 
-from app.config import EMBEDDING_MODEL, OPENAI_API_KEY
-
-
-def get_embeddings() -> OpenAIEmbeddings:
-    return OpenAIEmbeddings(model=EMBEDDING_MODEL, api_key=OPENAI_API_KEY)
-
+from app.models.embeddings import get_embeddings
 
 def create_vector_store(chunks: list, persist_dir: Path) -> Chroma:
     """Create and persist a Chroma vector store from document chunks."""
@@ -27,3 +21,8 @@ def load_vector_store(persist_dir: Path) -> Chroma:
         persist_directory=str(persist_dir),
         embedding_function=get_embeddings(),
     )
+
+
+def vector_store_exists(persist_dir: Path) -> bool:
+    """Return True if a persisted Chroma database is present."""
+    return (persist_dir / "chroma.sqlite3").exists()
