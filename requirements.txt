@@ -15,5 +15,5 @@ python-docx>=1.1.0
 python-dotenv>=1.0.0
 tiktoken>=0.7.0
 
-# Optional: local embeddings (uncomment if not using OpenAI)
-# sentence-transformers>=3.0.0
+# Local embeddings (lightweight, runs on CPU)
+sentence-transformers>=3.0.0

@@ -15,6 +15,9 @@ dist/
 build/
 .eggs/
 
+# Downloaded model weights
+models/embeddings/
+
 # Vector store & processed data
 storage/vector_store/*
 !storage/vector_store/.gitkeep
