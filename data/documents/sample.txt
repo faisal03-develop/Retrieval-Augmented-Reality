@@ -1,0 +1,14 @@
+RAG Chatbot Sample Document
+
+This is a sample document for testing the Retrieval-Augmented Generation chatbot.
+
+The chatbot uses local embeddings (BAAI/bge-small-en-v1.5) to index your documents
+and Ollama for generating answers based on retrieved context.
+
+To add your own knowledge base, place PDF or TXT files in the data/documents folder
+and run: python -m app.main ingest
+
+Key features:
+- Local embeddings run on CPU without an OpenAI API key.
+- Chat responses are powered by a local Ollama model.
+- Documents are stored in a Chroma vector database.
