@@ -3,9 +3,8 @@
 from langchain_classic.chains import create_retrieval_chain
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_openai import ChatOpenAI
 
-from app.config import CHAT_MODEL, OPENAI_API_KEY
+from app.models.llm import get_chat_model
 
 
 SYSTEM_PROMPT = """You are a helpful assistant that answers questions based on the provided context.
@@ -18,7 +17,7 @@ Context:
 
 def build_rag_chain(retriever):
     """Build a retrieval-augmented generation chain."""
-    llm = ChatOpenAI(model=CHAT_MODEL, api_key=OPENAI_API_KEY, temperature=0)
+    llm = get_chat_model()
 
     prompt = ChatPromptTemplate.from_messages([
         ("system", SYSTEM_PROMPT),
